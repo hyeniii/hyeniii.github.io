@@ -18,8 +18,7 @@
         - 7th place at the nationwide Humana Mays Case Competition
         - title: Relevant Courses
           contents:
-            - Scalable Software Architecture, Cloud Engineering, Analytics for Big Data, Text Analytics, Deep Learning,
-Data Mining, Predictive Analytics, Social Network Analysis, Databases and Info Retrieval, Data Warehousing
+            - Scalable Software Architecture, Cloud Engineering, Analytics for Big Data, Text Analytics, Deep Learning, Data Mining, Predictive Analytics, Social Network Analysis, Databases and Info Retrieval, Data Warehousing
     - title: MS
       institution: Yonsei University
       year: 2021
@@ -31,7 +30,7 @@ Data Mining, Predictive Analytics, Social Network Analysis, Databases and Info R
   contents:
     - title: Data Science Intern
       institution: TransUnion
-      year: June 2023 - Aug. 2023
+      year: 06/2023-08/2023
       description:
         - Utilized Spark to efficiently query data from a +1 billion user database and conducted extensive data analysis and pre-processing operations to ensure data quality and accuracy.
         - Developed a multiclass classification model to recommend the user's next purchase, increasing forecasting metrics by 5~20% across various clusters relative to the predecessor model.
@@ -40,7 +39,7 @@ Data Mining, Predictive Analytics, Social Network Analysis, Databases and Info R
 
     - title: Data Science Consultant
       institution: Honda R&D (Northwestern Practicum)
-      year: Oct. 2022 - June 2023
+      year: 10/2022-06/2023
       description:
         - Achieved a significant reduction in error, cutting mean absolute error by ~95% against the predecessor model.
         - Developed and optimized cost prediction models for enhanced future cost and budget planning.
@@ -54,39 +53,21 @@ Data Mining, Predictive Analytics, Social Network Analysis, Databases and Info R
       description: Mobile application that utilizes an object-detection AI model to allow users to log meals and receive recommendations for supplements based on their nutrition status.
 
 - title: Certification
+  type: map
   contents:
-    - title: AWS Cloud Practitioner
-      year: July 2023
+    - name: Certification name
+      value: AWS Cloud Practitioner
+    - name: Acuquired Date
+      value: July 2023
 
 - title: Language and Software Skills
+  type: map
   contents:
-    - title: Programming Language
-      items: 
-        - Python
-        - SQL
-        - Javascript
-        - Unix Shell Scripting
-        - Java
-    - title: Software
-      items: 
-        - Spark
-        - Docker
-        - Git
-        - Fast-API
-        - Node.js
-        - Express
-        - React.js 
-        - Tableau
-    - title: Machine Learning
-      items: 
-        - PyTorch
-        - Scikit-learn
-        - Pandas
-        - Numpy
-        - Matplotlib
-        - LangChain
-        - MlFLow
-        - HuggingFace
-    - title: Cloud Services
-      item:
-        - AWS(S3, RDS, DynamoDB, Lambda, Step Functions, ECS, EC2)
+    - name: Programming Language
+      value: Python, SQL, Javascript, Unix Shell Scripting, Java
+    - name: Software
+      value: Spark, Docker, Git, Fast-API, Node.js, Express, React.js , Tableau
+    - name: Machine Learning
+      value: PyTorch, Scikit-learn, Pandas, Numpy, Matplotlib, LangChain, MlFLow, HuggingFace
+    - name: Cloud Services
+      value: AWS(S3, RDS, DynamoDB, Lambda, Step Functions, ECS, EC2)
