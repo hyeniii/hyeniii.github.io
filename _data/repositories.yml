@@ -1,12 +1,8 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - hyeniii
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - hyeniii/AWS-mlops
+  - hyeniii/auto-readme
+  - hyeniii/ASL-deep-learning
+  - hyeniii/phishing-webpage-detection

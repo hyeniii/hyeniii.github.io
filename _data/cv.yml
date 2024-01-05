@@ -2,96 +2,91 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
+      value: Hye Won (Nicole) Hwang
     - name: Date of Birth
-      value: 14th March 1879
+      value: 28th Jan. 1996
     - name: Languages
-      value: English, German
+      value: English, Korea
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+    - title: MS
+      institution: Northwestern University
+      year: 2023
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
+        - 7th place at the nationwide Humana Mays Case Competition
+        - title: Relevant Courses
           contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
+            - Scalable Software Architecture, Cloud Engineering, Analytics for Big Data, Text Analytics, Deep Learning,
+Data Mining, Predictive Analytics, Social Network Analysis, Databases and Info Retrieval, Data Warehousing
+    - title: MS
+      institution: Yonsei University
+      year: 2021
       description:
-        - Description 1.
-        - Description 2.
+        - Hye Won Hwang, et al. "A genomics-based semi-rational approach for expanding the postbiotic potential of collagen peptides using Lactobacillaceae." Journal of Agricultural and Food Chemistry 70.27 (2022).
 
 - title: Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: Data Science Intern
+      institution: TransUnion
+      year: June 2023 - Aug. 2023
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
+        - Utilized Spark to efficiently query data from a +1 billion user database and conducted extensive data analysis and pre-processing operations to ensure data quality and accuracy.
+        - Developed a multiclass classification model to recommend the user's next purchase, increasing forecasting metrics by 5~20% across various clusters relative to the predecessor model.
+        - Streamlined modeling pipelines by introducing modular components, achieving end-to-end automation from data preprocessing to evaluation.
+        - Implemented segmentation strategies to delineate distinct customer cohorts to enhance model efficiency.
+
+    - title: Data Science Consultant
+      institution: Honda R&D (Northwestern Practicum)
+      year: Oct. 2022 - June 2023
       description:
-        - Description 1.
-        - Description 2.
-
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
-      description:
-
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
+        - Achieved a significant reduction in error, cutting mean absolute error by ~95% against the predecessor model.
+        - Developed and optimized cost prediction models for enhanced future cost and budget planning.
+        - Collaborated closely with cross-functional teams, leveraging diverse expertise and perspectives, to successfully present strategic initiatives to key stakeholder leadership, driving alignment and fostering innovation.
 
 - title: Open Source Projects
   type: time_table
   contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+    - title: <a href="https://github.com/nutri-ai">Nutri-AI</a>
+      year: 2022
+      description: Mobile application that utilizes an object-detection AI model to allow users to log meals and receive recommendations for supplements based on their nutrition status.
 
-- title: Honors and Awards
-  type: time_table
+- title: Certification
   contents:
-    - year: 1921
-      items: 
-        - Nobel Prize in Physics 
-        - Matteucci Medal
-    - year: 2029
-      items: 
-        - Max Planck Medal
+    - title: AWS Cloud Practitioner
+      year: July 2023
 
-- title: Academic Interests
-  type: nested_list
+- title: Language and Software Skills
   contents:
-    - title: Topic 1.
+    - title: Programming Language
       items: 
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
-      items:
-        - Description 1.
-        - Description 2.
-
-- title: Other Interests
-  type: list
-  contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+        - Python
+        - SQL
+        - Javascript
+        - Unix Shell Scripting
+        - Java
+    - title: Software
+      items: 
+        - Spark
+        - Docker
+        - Git
+        - Fast-API
+        - Node.js
+        - Express
+        - React.js 
+        - Tableau
+    - title: Machine Learning
+      items: 
+        - PyTorch
+        - Scikit-learn
+        - Pandas
+        - Numpy
+        - Matplotlib
+        - LangChain
+        - MlFLow
+        - HuggingFace
+    - title: Cloud Services
+      item:
+        - AWS(S3, RDS, DynamoDB, Lambda, Step Functions, ECS, EC2)
