@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2016-01-15 07:59:00-0400
+date: 2023-12-09 16:11:00-0400
 inline: true
 related_posts: false
 ---
 
-A simple inline announcement with Markdown emoji! :sparkles: :smile:
+<i class="fa-solid fa-graduation-cap"></i> Graduated from Northwestern University's Master of Machine Learning and Data Science (formerly MSiA)! 

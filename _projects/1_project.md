@@ -1,81 +1,105 @@
 ---
 layout: page
-title: project 1
-description: a project with a background image
-img: assets/img/12.jpg
+title: Fraud detection model pipeline
+description: Building a Machine Learning Pipeline for Fraud Detection
+img:
 importance: 1
-category: work
-related_publications: einstein1956investigations, einstein1950meaning
+category: fun
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
-
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
-
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
-
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
-
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, *bled* for your project, and then... you reveal its glory in the next row of images.
-
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
+<div class="col-sm mt-3 mt-md-0">
+    {% include figure.html path="assets/img/12.jpg" title="credit card fraud image" class="img-fluid rounded z-depth-1" style="max-width: 50%;"%}
 </div>
 
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+## Introduction
 
-{% raw %}
-```html
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
+This project develops a flexible machine learning pipeline tailored for detecting credit card fraud. Its core feature is the ability to train various models through configurable YAML files, allowing users to test different approaches easily. Integrated with MLflow, the pipeline tracks and manages training experiments, aiding in the comparison and evaluation of diverse models.
+
+A significant aspect of this pipeline is its capability to handle imbalanced data, a common challenge in fraud detection. Users can experiment with different sampling methods to balance the dataset, ensuring more accurate and reliable model performance. This flexibility, combined with comprehensive experiment tracking, positions the pipeline as a versatile tool in the fight against credit card fraud.
+
+## Project setup
+The project uses a variety of tools and libraries, including 
+- pandas for data manipulation, 
+- scikit-learn for machine learning, 
+- MLflow for experiment tracking,
+- joblib for model serialization
+
+The configuration is managed using YAML files, offering a flexible and dynamic way to handle various parameters.
+
+Here is an example of the config yaml file...
+```yaml
+experiment_name: "RandomForestClassifier hp tuning"
+data_path: "data/creditcard.csv"
+target: "Class"
+
+model:
+  class: "RandomForestClassifier"
+  module: "sklearn.ensemble"
+  params:
+    n_estimators: [100, 500]
+    max_depth: [10, 50]
+  save_path: "artifacts/model/rf_model.joblib"
+
+preprocessing:
+  sampler:
+    class: "RandomOverSampler"
+    module: "imblearn.over_sampling"
+  scaler:
+    class: "StandardScaler"
+    module: "sklearn.preprocessing"
 ```
-{% endraw %}
+Experimenter can simply change preprocessing and modeling methods by changing the corresponding methods in the config file and run the experiment.
+
+### Imbalance in Dataset: Strategies and Considerations
+
+
+<div class="col-sm-5 mt-3 mt-md-0" style="float: left; margin-right: 20px;" >
+    {% include figure.html path="assets/img/imbalance.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+</div>
+
+In machine learning, especially in problems like credit card fraud detection, class imbalance poses a significant challenge. The imbalance occurs when one class (e.g., fraudulent transactions) is vastly outnumbered by another (e.g., legitimate transactions). This imbalance can lead to models that are biased towards the majority class, often at the expense of poorly predicting the minority class, which is usually the class of interest.
+
+##### Strategies for Handling Imbalance
+
+- **Class Weights**: For models that support the class_weight parameter (such as many in scikit-learn), assigning a higher weight to the minority class helps counterbalance its underrepresentation. In our pipeline, we've integrated `class_weight='balanced'` for such models. This approach effectively tells the model to "pay more attention" to the minority class, which is crucial in fraud detection where failing to detect fraud (a false negative) can be very costly.
+
+- **Sampling Methods**: When class weights are not an option, or to explore different approaches, we can use sampling methods. These methods adjust the dataset before training the model. We've provided options for:
+    - **Undersampling**: Reducing the number of instances in the majority class.
+    - **Oversampling**: Increasing the number of instances in the minority class.
+    - **SMOTE (Synthetic Minority Over-sampling Technique)**: Creating synthetic instances of the minority class.
+
+##### The Debate Around SMOTE
+
+While SMOTE is a popular and powerful method to handle imbalanced datasets, it's not without its critics. Some concerns include:
+
+- **Distorted Data Space**: Synthetic points generated by SMOTE may not represent the true data distribution, potentially leading the model to learn incorrect patterns.
+
+- **Noise**: If the minority class has outliers, SMOTE may amplify these outliers by creating more synthetic instances around them.
+
+### Results and Comparisons
+
+#### ROC Curves and Recall Comparisons
+[Include ROC curve plots and recall values]
+
+#### Precision-Recall Curves
+[Include precision-recall curve plots]
+
+#### Confusion Matrices
+[Present confusion matrices for each model]
+
+#### F1 Scores and AUC
+[Table or chart comparing F1 scores and AUC values]
+
+#### Model Efficiency
+[Discuss training and prediction times]
+
+#### Feature Importance Analysis
+[Insights from feature importance, if applicable]
+
+#### Summary Table
+[A comprehensive table summarizing all key metrics for each model]
+
+#### Discussion of Results
+[Interpretation and insights from the above analyses]
+
