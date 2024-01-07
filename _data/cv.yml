@@ -50,7 +50,8 @@
   contents:
     - title: <a href="https://github.com/hyeniii/AWS-MLops">Property Price Predictor & Description Generator</a>
       year: 2023
-      description: Web application to estimate rental prices based on property descriptions and optimizes listings with AI-generated summaries tailored for platforms like Zillow. 
+      description: 
+        - Web application to estimate rental prices based on property descriptions and optimizes listings with AI-generated summaries tailored for platforms like Zillow. 
         - Developed a web application for real-time rental price estimation using AWS serverless infrastructure, enhancing scalability and cost-efficiency.
         - Automated ML model training with AWS Lambda and Step Functions, enabling continuous improvement of prediction accuracy.
         - Implemented generative AI techniques to craft compelling property listings, optimized for real estate platforms such as Zillow.
@@ -58,18 +59,21 @@
 
     - title: <a href="https://github.com/hyeniii/auto-readme">Auto-README</a>
       year: 2023
-      description: Developed a program to auto-generate README.md files for GitHub repositories by parsing code with Langchain and creating summaries with OpenAI's API.
+      description: 
+        - Developed a program to auto-generate README.md files for GitHub repositories by parsing code with Langchain and creating summaries with OpenAI's API.
 
     - title: <a href="https://github.com/hyeniii/phishing-webpage-detection">Phished?</a>
       year: 2023
-      description: A web application that detects phishing URLs using machine learning models.
+      description: 
+        - A web application that detects phishing URLs using machine learning models.
         - Developed a React.js-Fast API application to detect phishing URLs via a machine learning model object.
         - Engineered modular pipelines for model training and inference, supporting multiple ML classifiers; containerization using Docker for consistent deployment.
         - Leveraged AWS services; Deployed on ECS, stored data in S3, and utilized ECR for container registry.
         - Instituted rigorous unit testing protocols, resulting in enhanced application stability and a significant reduction in bugs.
     - title: <a href="https://github.com/nutri-ai">Nutri-AI</a>
       year: 2022
-      description: Mobile application that utilizes an object-detection AI model to allow users to log meals and receive recommendations for supplements based on their nutrition status.
+      description: 
+        - Mobile application that utilizes an object-detection AI model to allow users to log meals and receive recommendations for supplements based on their nutrition status.
         - Strategically designed an ERD and mapped its schema to DynamoDB, ensuring streamlined data retrieval and management.
         - Benchmarked object detection models' performance utilizing Weights and Biases (Wandb).
         - Deployed the model with ONNX runtime, containerized via Docker, and hosted on AWS EC2.
