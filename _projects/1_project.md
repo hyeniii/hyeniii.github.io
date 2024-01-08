@@ -79,27 +79,92 @@ While SMOTE is a popular and powerful method to handle imbalanced datasets, it's
 
 ### Results and Comparisons
 
-#### ROC Curves and Recall Comparisons
-[Include ROC curve plots and recall values]
-
 #### Precision-Recall Curves
-[Include precision-recall curve plots]
+<div class="col-sm-8 mt-3 mt-md-0" style="float: left; margin-right: 20px;" >
+    {% include figure.html path="assets/img/precision-recall-curve.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+</div>
 
-#### Confusion Matrices
-[Present confusion matrices for each model]
+I compared the model performances using precision-recall curve. ROC curves are appropriate when the observations are balanced between each class, whereas precision-recall curves are appropriate for imbalanced datasets.
 
-#### F1 Scores and AUC
-[Table or chart comparing F1 scores and AUC values]
+##### ROC Curves and Balanced Datasets
 
-#### Model Efficiency
-[Discuss training and prediction times]
+  - ROC Curve Basics:
+      - The ROC curve plots the True Positive Rate (TPR) against the False Positive Rate (FPR) at various threshold settings.
+      - TPR (also known as recall) is calculated as TP / (TP + FN) and FPR is FP / (FP + TN), where TP, FP, FN, and TN represent true positives, false positives, false negatives, and true negatives, respectively.
 
-#### Feature Importance Analysis
-[Insights from feature importance, if applicable]
+  - Effect of Balanced Data:
+      - In a balanced dataset, where the number of instances in each class is roughly equal, both the TPR and FPR are affected equally by the class distribution.
+      - This balance ensures that the ROC curve provides a reliable indication of how well the classifier can distinguish between the two classes under different thresholds.
 
-#### Summary Table
-[A comprehensive table summarizing all key metrics for each model]
+##### Precision-Recall Curves and Imbalanced Datasets
 
-#### Discussion of Results
-[Interpretation and insights from the above analyses]
+  - Precision-Recall Curve Basics:
+      - The precision-recall curve plots precision (TP / (TP + FP)) against recall (TPR).
+      Unlike the ROC curve, the precision-recall curve focuses on the performance of the classifier only on the positive class.
+
+  - Effect of Imbalanced Data:
+      - In imbalanced datasets, especially when the positive class (minority class) is much smaller than the negative class, ROC curves can be misleadingly optimistic. This is because the FPR does not capture the model's ability to correctly identify the minority class—it can have a low FPR by simply classifying most instances as the majority class.
+      - Precision, however, directly reflects the model's ability to correctly identify positive instances among all instances it labeled as positive. In imbalanced scenarios, this is a more crucial measure.
+      - The precision-recall curve is more informative in these situations as it illustrates the trade-off between precision and recall (sensitivity to the minority class) without being affected by the large number of true negatives, which can dominate the FPR measure.
+
+Precision
+
+  - Definition: Precision is the ratio of correctly predicted positive observations to the total predicted positive observations. In the context of fraud detection, it answers the question, "Of all transactions classified as fraudulent, how many are actually fraudulent?"
+  - Formula: Precision = TP / (TP + FP), where TP is True Positives and FP is False Positives.
+  - Importance: High precision indicates a low rate of false positives (legitimate transactions incorrectly labeled as fraud). This is important in fraud detection because false positives can lead to customer dissatisfaction and unnecessary verification procedures.
+
+Recall (Sensitivity)
+
+  - Definition: Recall is the ratio of correctly predicted positive observations to all observations in the actual class. In fraud detection, it answers the question, "Of all the fraudulent transactions, how many did the model successfully identify?"
+  - Formula: Recall = TP / (TP + FN), where TP is True Positives and FN is False Negatives.
+  - Importance: High recall is crucial in fraud detection because it indicates a low rate of false negatives (fraudulent transactions that are not detected). Missing fraudulent transactions can lead to significant financial losses and security breaches.
+
+Balancing Precision and Recall
+
+In credit card fraud detection:
+
+  - High Precision: Means fewer legitimate transactions are incorrectly flagged as fraudulent, reducing inconvenience to customers. However, this might come at the cost of missing some fraudulent transactions.
+  - High Recall: Ensures that most fraudulent transactions are caught, enhancing security. However, this might result in more legitimate transactions being flagged as fraudulent, potentially leading to customer dissatisfaction.
+
+Balancing these two metrics is crucial. A model that excessively flags transactions as fraudulent (high recall but low precision) could annoy customers, while a model that is too conservative (high precision but low recall) could miss detecting actual fraud, leading to financial losses. The ideal balance depends on the costs associated with false positives and false negatives in the specific context of the application.
+
+### Discussion of Results
+<div class="col-sm mt-3 mt-md-0" style="float: left; margin-right: 20px;" >
+    {% include figure.html path="assets/img/summary.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+</div>
+
+**Model Performance:**
+- The **Random Forest** classifier emerges as the optimal model amongst those evaluated. It achieves a balance between precision and recall, both approximately 0.8, at the chosen threshold of 0.14. This balance is crucial in credit card fraud detection where it is important to correctly identify as many fraudulent transactions as possible (high recall) while minimizing the number of legitimate transactions incorrectly flagged as fraudulent (high precision).
+- **Gradient Boosting** shows a high recall but very low precision, which indicates it is identifying most of the fraudulent transactions but at the cost of a high false positive rate. This could lead to a significant number of legitimate transactions being flagged as fraud, which may not be desirable.
+- **KNN** and **Logistic Regression** models show extreme cases with KNN predicting most samples as the positive class (recall of 1.0 but precision of 0.0) and Logistic Regression predicting most samples as the negative class (recall of 0.0). These models appear to be ineffective for this particular problem.
+
+**F1 Score:**
+- The F1 score, which is the harmonic mean of precision and recall, is highest for the Random Forest model (0.72), corroborating its superior performance in balancing the precision-recall trade-off.
+
+**Training Time:**
+- In terms of training efficiency, the Random Forest model has a comparatively low training time, which is an important consideration when models need to be retrained frequently as new data becomes available.
+
+From the models compared, the Random Forest classifier is recommended for the credit card fraud detection task. It not only provides the best balance between precision and recall but also has an excellent ability to differentiate between classes as evidenced by its ROC AUC score. Its relatively short training time suggests that it would be practical for operational use where models may need to be updated regularly.
+
+For deployment, it's important to consider the operational environment and how the model's predictions will be acted upon. False positives, while lower than other models, will still occur and processes need to be in place to handle these efficiently. Likewise, while the recall is high, it is not 100%, so some fraudulent transactions may still go undetected.
+
+Finally, ongoing monitoring of the model's performance is crucial, as changes in customer behavior or fraud tactics could change the model's effectiveness over time. Regular reevaluation and updates to the model, along with continuous improvements to feature engineering and threshold
+
+adjustment, will be key to maintaining high performance in the face of evolving patterns of credit card use and fraud.
+
+### Future Improvements
+
+Some ways to improve the model...
+
+1. **Try Anomaly Detection Techniques**:
+   - Since fraud is relatively rare, it can be treated as an anomaly. Anomaly detection algorithms could potentially be more effective in identifying fraud cases.
+
+2. **Ensemble Methods**:
+   - Use ensemble methods like Random Forest or Gradient Boosting that aggregate the decisions of multiple models to improve performance. Bagging and boosting can help reduce variance and bias, respectively.
+
+3. **Use Advanced Algorithms**:
+   - Explore advanced algorithms that are specifically designed for imbalanced data, such as SMOTE for oversampling or anomaly detection algorithms like Isolation Forest or One-Class SVM.
+
+4. **Tune Hyperparameters**:
+    - Optimize the model hyperparameters with larger parameter space.
 
