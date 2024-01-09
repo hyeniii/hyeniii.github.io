@@ -11,6 +11,8 @@ category: fun
 
 Utilize tokenization, stemming and vectorize using TfidfVectorizer. Utilize KMeans to create clusters using vectorized data and cosine similarity to find movie plots that are similar to one another.
 
+[Check out the product frontend!](https://movie-recommender-v0wd.onrender.com/)
+
 ### Data
 
 [Source](https://www.kaggle.com/datasets/devendra45/movies-similarity)
