@@ -1,8 +1,8 @@
 ---
 layout: page
-title: project 3
+title: Real-time Data Processing
 description: a project that redirects to another website
-img: assets/img/7.jpg
+img: 
 redirect: https://unsplash.com
 importance: 3
 category: work
