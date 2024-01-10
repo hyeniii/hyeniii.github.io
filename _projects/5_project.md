@@ -1,80 +1,98 @@
 ---
 layout: page
-title: project 5
-description: a project with a background image
-img: assets/img/1.jpg
-importance: 3
+title: Word2Vec from Scratch (PyTorch)
+description: build a word2vec deep learning model using pytorch framework
+img: 
+importance: 4
 category: fun
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+# Understanding Word2Vec with PyTorch: A Beginner's Guide
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+Word2Vec is a group of models used to produce word embeddings, a technique where words from a vocabulary are represented as vectors in a continuous vector space. This approach allows for capturing contextual relationships among words. Here, we will walk through a PyTorch implementation of Word2Vec ([source](https://github.com/OlgaChernytska/word2vec-pytorch/tree/main)), exploring different components like data loading, model building, training, and utility functions.
+For code with more comments: [visit my github repo](https://github.com/hyeniii/word2vec_from_scratch_pytorch)
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+## Overview
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+Our implementation includes several Python files:
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, *bled* for your project, and then... you reveal its glory in the next row of images.
+- `train.py`: Orchestrates the training process.
+- `utils.helper.py`: Contains utility functions.
+- `utils.model.py`: Defines the Word2Vec models (CBOW and SkipGram).
+- `utils.dataloader.py`: Handles data loading and preprocessing.
+- `utils.trainer.py`: Manages the training loop.
+- `utils.constants.py`: Stores constant values used throughout the code.
 
+Let's break down each component.
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+### `constants.py`
 
+This file stores constant values:
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+- `CBOW_N_WORDS` and `SKIPGRAM_N_WORDS`: Define the context window size for CBOW and SkipGram models, respectively.
+- `MIN_WORD_FREQUENCY`: Minimum frequency for words to be included in our vocabulary.
+- `MAX_SEQUENCE_LENGTH`: Maximum length of sequences processed.
+- `EMBED_DIMENSION`: The size of each word embedding.
+- `EMBED_MAX_NORM`: Maximum norm of the embeddings.
 
-{% raw %}
-```html
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-```
-{% endraw %}
+### `helper.py`
+
+Contains utility functions:
+
+- `get_model_class`: Returns the model class based on the model name ('cbow' or 'skipgram').
+- `get_optimizer_class`: Returns the Adam optimizer.
+- `get_lr_scheduler`: Creates a learning rate scheduler that linearly decreases the learning rate.
+- `save_config`: Saves the training configuration as a YAML file.
+- `save_vocab`: Saves the vocabulary to a file.
+
+### `model.py`
+
+Defines the Word2Vec models:
+
+- `CBOW_Model`: Predicts a target word based on context words.
+- `SkipGram_Model`: Predicts context words from a target word.
+
+### `dataloader.py`
+
+Manages data loading:
+
+- `get_english_tokenizer`: Tokenizes English text.
+- `get_data_iterator`: Loads the WikiText2 or WikiText103 datasets.
+- `build_vocab`: Builds a vocabulary from the dataset.
+- `collate_cbow` and `collate_skipgram`: Prepare data batches for the respective models.
+- `get_dataloader_and_vocab`: Creates a DataLoader for the model and builds the vocabulary if not already provided.
+
+### `trainer.py`
+
+Handles the training process:
+
+- The `Trainer` class manages the training and validation loops, loss computation, and saving model checkpoints.
+
+### `train.py`
+
+The entry point for training:
+
+- Parses the configuration file.
+- Sets up directories, dataloaders, models, and training components.
+- Initializes the `Trainer` and starts the training process.
+
+## Understanding the Workflow
+
+### Data Loading and Preprocessing
+
+The process starts with data loading. Using `dataloader.py`, we load a dataset (like WikiText2), tokenize the text, and build a vocabulary. The DataLoader is set up to provide data in batches suitable for either the CBOW or SkipGram model.
+
+### Model Initialization
+
+`model.py` defines the Word2Vec models. Depending on the configuration, either CBOW or SkipGram is chosen. The model is then initialized with parameters like embedding dimensions.
+
+### Training Process
+
+The `train.py` script ties everything together. It reads a configuration file, sets up necessary components, and starts the training process using the `Trainer` class from `trainer.py`. The trainer handles the training and validation loops, updating the model weights using backpropagation, and saves checkpoints.
+
+### Utility Functions
+
+`helper.py` includes several utility functions for model and optimizer selection, learning rate scheduling, and saving configurations and vocabularies.
+
+## Conclusion
+
