@@ -3,7 +3,7 @@ layout: page
 title: Word2Vec from Scratch (PyTorch)
 description: build a word2vec deep learning model using pytorch framework
 img: 
-importance: 4
+importance: 3
 category: fun
 ---
 
