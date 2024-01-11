@@ -1,10 +1,10 @@
 ---
 layout: page
-title: Anomaly Detection
-description:
+title: _
+description: Anomaly Detection
 img: 
-importance: 2
-category: work
+importance: 4
+category: fun
 giscus_comments: true
 ---
 

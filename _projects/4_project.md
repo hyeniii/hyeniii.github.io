@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Multimodel deep learning model
-description: another without an image
+title: _
+description: Multimodel deep learning model
 img:
-importance: 3
+importance: 6
 category: fun
 ---
 

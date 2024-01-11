@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Real-time Data Processing
-description: a project that redirects to another website
+title: _
+description: Real-time Data Processing
 img: 
 redirect: https://unsplash.com
-importance: 3
-category: work
+importance: 5
+category: fun
 ---
 
 Every project has a beautiful feature showcase page.
