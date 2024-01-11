@@ -5,6 +5,8 @@ description: Building a Machine Learning Pipeline for Fraud Detection
 img:
 importance: 1
 category: fun
+toc:
+  sidebar: left
 ---
 
 <div class="col-sm mt-3 mt-md-0">

@@ -5,6 +5,8 @@ description:  use  NLP (Natural Language Processing) and KMeans to predict the s
 img:
 importance: 4
 category: fun
+toc:
+  sidebar: left
 ---
 
 ## Movie Recommender
