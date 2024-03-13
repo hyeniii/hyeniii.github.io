@@ -25,4 +25,6 @@ If you are interested, don't hesitate to contact me at `nicole.hw.hwang@gmail.co
 
 You can also refer to my [linkedin]("https://www.linkedin.com/hye-won-nicole-hwang") or download my [resume](assets/pdf/HyeWon_Hwang_resume.pdf).
 
+Actively working on projects related to [LLMs]("https://huggingface.co/hyewonee96")
+
 Check out my current [projects](projects/) while you are here!
