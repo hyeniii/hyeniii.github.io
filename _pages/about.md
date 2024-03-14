@@ -23,7 +23,7 @@ Hi there! My name is Hye Won (Nicole) Hwang. I am a recent graduate of Northwest
 
 If you are interested, don't hesitate to contact me at `nicole.hw.hwang@gmail.com`
 
-You can also refer to my [linkedin](https://www.linkedin.com/hye-won-nicole-hwang) or download my [resume](assets/pdf/HyeWon_Hwang_resume.pdf).
+You can also refer to my [linkedin](https://www.linkedin.com/in/hye-won-nicole-hwang) or download my [resume](assets/pdf/HyeWon_Hwang_resume.pdf).
 
 Actively working on projects related to [LLMs](https://huggingface.co/hyewonee96)
 
